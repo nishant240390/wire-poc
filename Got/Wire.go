@@ -1,11 +1,6 @@
-package main
-
-import (
-	"github.com/google/wire"
-	"wire-poc/House"
-)
-
 // +build wireinject
+
+package main
 
 func Initialise()(War,error){
 	wire.Build(NewWar, ProvideStarks, ProvideLannisters)
