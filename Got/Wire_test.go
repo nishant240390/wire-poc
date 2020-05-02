@@ -14,13 +14,7 @@ func TestInitialise(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			stark,err := NewStarkProvider("john")
-
-			lannister,err := NewLannisterProvider("cersie")
-
-			beyondWall ,err := NewBeyondWallProvider("night king")
-
-			got, err := Initialize(stark,lannister,beyondWall)
+			got, err := Initialize()
 			if  err != nil{
 				t.Errorf("Initialise() error ")
 				return
