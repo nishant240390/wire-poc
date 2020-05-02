@@ -1,4 +1,4 @@
-//+build wireinject
+
 
 
 package main
@@ -9,7 +9,7 @@ import (
 )
 
 func Initialize(stark House.Stark, lannisters House.Lannisters)(War,error){
-	wire.Build(NewWar)
+	wire.Build(NewWar,NewBeyondWallProvider)
 	return War{},nil
 }
 func NewStarkProvider(name string)(House.Stark,error){
@@ -20,4 +20,8 @@ func NewStarkProvider(name string)(House.Stark,error){
 func NewLannisterProvider(name string)(House.Lannisters,error){
 	wire.Build(ProvideLannisters)
 	return House.Lannisters{},nil
+}
+func NewBeyondWallProvider()House.BeyondWall{
+	wire.Build(ProvideBeyondWallSet)
+	return House.BeyondWall{}
 }
