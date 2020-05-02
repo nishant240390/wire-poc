@@ -7,7 +7,7 @@ import (
 	"wire-poc/House"
 )
 
-func Initialize()(War,error){
+func Initialize(isMock bool)(War,error){
 	wire.Build(wire.NewSet(ProvideBeyondWall,wire.Bind(new(House.IHouse),new(*House.BeyondWall)),NewStarkProvider,NewLannisterProvider,NewWar))
 	return War{},nil
 }

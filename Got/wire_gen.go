@@ -11,7 +11,7 @@ import (
 
 // Injectors from Wire.go:
 
-func Initialize() (War, error) {
+func Initialize(isMock bool) (War, error) {
 	stark, err := NewStarkProvider()
 	if err != nil {
 		return War{}, err
@@ -20,7 +20,7 @@ func Initialize() (War, error) {
 	if err != nil {
 		return War{}, err
 	}
-	beyondWall := ProvideBeyondWall()
+	beyondWall := ProvideBeyondWall(isMock)
 	war := NewWar(stark, lannisters, beyondWall)
 	return war, nil
 }
