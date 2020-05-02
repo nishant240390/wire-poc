@@ -5,11 +5,23 @@
 
 package main
 
+import (
+	"wire-poc/House"
+)
+
 // Injectors from Wire.go:
 
-func Initialise(name string) (War, error) {
-	stark := ProvideStarks(name)
-	lannisters := ProvideLannisters()
+func Initialize(stark House.Stark, lannisters House.Lannisters) (War, error) {
 	war := NewWar(stark, lannisters)
 	return war, nil
+}
+
+func NewStarkProvider(name string) (House.Stark, error) {
+	stark := ProvideStarks(name)
+	return stark, nil
+}
+
+func NewLannisterProvider(name string) (House.Lannisters, error) {
+	lannisters := ProvideLannisters()
+	return lannisters, nil
 }
