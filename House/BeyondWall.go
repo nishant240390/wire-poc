@@ -2,7 +2,8 @@ package House
 import "fmt"
 
 type BeyondWall struct {
+	Leader string
 }
-func (l *BeyondWall) Fight()string {
-	return fmt.Sprintf("%s : BeyondWall assemble")
+func (b *BeyondWall) Fight()string {
+	return fmt.Sprintf("%s : BeyondWall assemble","knightking")
 }

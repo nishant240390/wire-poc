@@ -1,5 +1,4 @@
-
-
+//+build wireinject
 
 package main
 
@@ -8,20 +7,18 @@ import (
 	"wire-poc/House"
 )
 
-func Initialize(stark House.Stark, lannisters House.Lannisters)(War,error){
-	wire.Build(NewWar,NewBeyondWallProvider)
+func Initialize()(War,error){
+	wire.Build(wire.NewSet(ProvideBeyondWall,wire.Bind(new(House.IHouse),new(*House.BeyondWall)),NewStarkProvider,NewLannisterProvider,NewWar))
 	return War{},nil
 }
-func NewStarkProvider(name string)(House.Stark,error){
+func NewStarkProvider()(House.Stark,error){
 	wire.Build(ProvideStarks)
 	return House.Stark{},nil
 }
 
-func NewLannisterProvider(name string)(House.Lannisters,error){
+func NewLannisterProvider()(House.Lannisters,error){
 	wire.Build(ProvideLannisters)
 	return House.Lannisters{},nil
 }
-func NewBeyondWallProvider()House.BeyondWall{
-	wire.Build(ProvideBeyondWallSet)
-	return House.BeyondWall{}
-}
+
+

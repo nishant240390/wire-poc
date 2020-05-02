@@ -18,7 +18,9 @@ func TestInitialise(t *testing.T) {
 
 			lannister,err := NewLannisterProvider("cersie")
 
-			got, err := Initialize(stark,lannister)
+			beyondWall ,err := NewBeyondWallProvider("night king")
+
+			got, err := Initialize(stark,lannister,beyondWall)
 			if  err != nil{
 				t.Errorf("Initialise() error ")
 				return

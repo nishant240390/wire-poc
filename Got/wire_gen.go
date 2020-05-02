@@ -11,17 +11,26 @@ import (
 
 // Injectors from Wire.go:
 
-func Initialize(stark House.Stark, lannisters House.Lannisters) (War, error) {
-	war := NewWar(stark, lannisters)
+func Initialize() (War, error) {
+	stark, err := NewStarkProvider()
+	if err != nil {
+		return War{}, err
+	}
+	lannisters, err := NewLannisterProvider()
+	if err != nil {
+		return War{}, err
+	}
+	beyondWall := ProvideBeyondWall()
+	war := NewWar(stark, lannisters, beyondWall)
 	return war, nil
 }
 
-func NewStarkProvider(name string) (House.Stark, error) {
-	stark := ProvideStarks(name)
+func NewStarkProvider() (House.Stark, error) {
+	stark := ProvideStarks()
 	return stark, nil
 }
 
-func NewLannisterProvider(name string) (House.Lannisters, error) {
+func NewLannisterProvider() (House.Lannisters, error) {
 	lannisters := ProvideLannisters()
 	return lannisters, nil
 }
