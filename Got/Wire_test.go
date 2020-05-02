@@ -9,17 +9,17 @@ func TestInitialise(t *testing.T) {
 		name    string
 	}{
 		{
-			name : "test1",
+			name: "name",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, err := Initialise()
-			if err != nil {
+			got, err := Initialise()
+			if  err != nil{
 				t.Errorf("Initialise() error ")
 				return
 			}
+			got.startWar()
 		})
 	}
 }
-
