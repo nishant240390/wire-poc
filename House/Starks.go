@@ -1,12 +1,8 @@
 package House
 
-import (
-   "fmt"
-)
-
 type Stark struct {
 
 }
-func (s *Stark) Fight() {
-   fmt.Print("stark assemble")
+func (s *Stark) Fight()string {
+   return "stark assemble"
 }

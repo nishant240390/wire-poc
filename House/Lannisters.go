@@ -1,10 +1,8 @@
 package House
 
-import "fmt"
-
 type Lannisters struct {
 
 }
-func (l *Lannisters) Fight() {
-	fmt.Print("lannisters assemble")
+func (l *Lannisters) Fight()string {
+	return "lannisters assemble"
 }
