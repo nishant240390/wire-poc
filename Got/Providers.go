@@ -3,8 +3,8 @@ package main
 
 import "wire-poc/House"
 
-func ProvideStarks() House.Stark {
-	return House.Stark{}
+func ProvideStarks(name string) House.Stark {
+	return House.Stark{Leader:name}
 }
 func ProvideLannisters() House.Lannisters{
 	return House.Lannisters{}

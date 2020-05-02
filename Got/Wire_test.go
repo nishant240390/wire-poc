@@ -14,7 +14,7 @@ func TestInitialise(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := Initialise()
+			got, err := Initialise("john")
 			if  err != nil{
 				t.Errorf("Initialise() error ")
 				return

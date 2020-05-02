@@ -7,8 +7,8 @@ package main
 
 // Injectors from Wire.go:
 
-func Initialise() (War, error) {
-	stark := ProvideStarks()
+func Initialise(name string) (War, error) {
+	stark := ProvideStarks(name)
 	lannisters := ProvideLannisters()
 	war := NewWar(stark, lannisters)
 	return war, nil

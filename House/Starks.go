@@ -1,8 +1,10 @@
 package House
 
-type Stark struct {
+import "fmt"
 
+type Stark struct {
+   Leader string
 }
 func (s *Stark) Fight()string {
-   return "stark assemble"
+   return fmt.Sprintf("%s : stark assemble",s.Leader)
 }

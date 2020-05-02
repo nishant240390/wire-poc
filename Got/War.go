@@ -10,5 +10,5 @@ type War struct{
 	house2 House.Lannisters
 }
 func (w *War) startWar() {
-	fmt.Printf("%s\n %s",w.house1.Fight(),w.house2.Fight())
+	fmt.Printf("%s\n%s",w.house1.Fight(),w.house2.Fight())
 }
