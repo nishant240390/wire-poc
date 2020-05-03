@@ -11,7 +11,7 @@ import (
 
 // Injectors from Wire.go:
 
-func Initialize(isMock bool) (War, error) {
+func Initialize() (War, error) {
 	stark, err := NewStarkProvider()
 	if err != nil {
 		return War{}, err
@@ -20,7 +20,10 @@ func Initialize(isMock bool) (War, error) {
 	if err != nil {
 		return War{}, err
 	}
-	beyondWall := ProvideBeyondWall(isMock)
+	beyondWall, err := NewBeyondWallProvider()
+	if err != nil {
+		return War{}, err
+	}
 	war := NewWar(stark, lannisters, beyondWall)
 	return war, nil
 }
@@ -33,4 +36,9 @@ func NewStarkProvider() (House.Stark, error) {
 func NewLannisterProvider() (House.Lannisters, error) {
 	lannisters := ProvideLannisters()
 	return lannisters, nil
+}
+
+func NewBeyondWallProvider() (House.BeyondWall, error) {
+	beyondWall := ProvideBeyondWall()
+	return beyondWall, nil
 }
