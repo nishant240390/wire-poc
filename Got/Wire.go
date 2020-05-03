@@ -13,7 +13,7 @@ func Initialize()(War,error){
 		NewStarkProvider,
 		NewLannisterProvider,
 		wire.NewSet(ProvideBeyondWall,wire.Bind(new(House.IHouse), new(*House.BeyondWall))),
-	    wire.Struct(new(War),"House1","House2","House3"))
+	    wire.Struct(new(War),"*"))
 	return War{},nil
 }
 
