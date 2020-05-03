@@ -6,10 +6,10 @@ import (
 )
 
 type War struct{
-	house1 House.Stark
-	house2 House.Lannisters
-	house3 House.IHouse
+	House1 House.Stark
+	House2 House.Lannisters
+	House3 House.IHouse
 }
 func (w *War) startWar() {
-	fmt.Printf("%s\n%s\n%s",w.house1.Fight(),w.house2.Fight(),w.house3.Fight())
+	fmt.Printf("%s\n%s\n%s",w.House1.Fight(),w.House2.Fight(),w.House3.Fight())
 }

@@ -10,24 +10,23 @@ import (
 
 func Initialize()(War,error){
 	wire.Build(
-			ProvideBeyondWall,
-			wire.Bind(new(House.IHouse), new(*House.BeyondWall)),
-			NewStarkProvider,
-			NewLannisterProvider,
-			NewWar)
+		NewStarkProvider,
+		NewLannisterProvider,
+		wire.NewSet(ProvideBeyondWall,wire.Bind(new(House.IHouse), new(*House.BeyondWall))),
+	    wire.Struct(new(War),"House1","House2","House3"))
 	return War{},nil
 }
 
 func InitializeMock()(War,error){
 	wire.Build(
 		wire.NewSet(
-			ProvideMockBeyondWall,
-			wire.Bind(new(House.IHouse), new(*House.MockBeyondWall)),
+			wire.NewSet(ProvideMockBeyondWall,wire.Bind(new(House.IHouse), new(*House.MockBeyondWall))),
 			NewStarkProvider,
 			NewLannisterProvider,
 			NewWar))
 	return War{},nil
 }
+
 
 func NewStarkProvider()(House.Stark,error){
 	wire.Build(ProvideStarks)

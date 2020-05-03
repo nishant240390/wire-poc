@@ -21,7 +21,11 @@ func Initialize() (War, error) {
 		return War{}, err
 	}
 	beyondWall := ProvideBeyondWall()
-	war := NewWar(stark, lannisters, beyondWall)
+	war := War{
+		House1: stark,
+		House2: lannisters,
+		House3: beyondWall,
+	}
 	return war, nil
 }
 

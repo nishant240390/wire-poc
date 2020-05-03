@@ -19,5 +19,5 @@ func ProvideBeyondWall( )*House.BeyondWall{
 }
 
 func NewWar(h1 House.Stark , h2 House.Lannisters, h3 House.IHouse) War{
-	return War{house1:h1,house2:h2, house3:h3}
+	return War{House1:h1,House2:h2, House3:h3}
 }
