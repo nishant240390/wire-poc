@@ -1,5 +1,6 @@
 //+build wireinject
 
+
 package main
 
 import (
@@ -9,22 +10,23 @@ import (
 
 func Initialize()(War,error){
 	wire.Build(
-		    NewBeyondWallProvider,
+			ProvideBeyondWall,
+			wire.Bind(new(House.IHouse), new(*House.BeyondWall)),
 			NewStarkProvider,
 			NewLannisterProvider,
 			NewWar)
 	return War{},nil
 }
 
-func InitializeMock()(MockWar,error){
+func InitializeMock()(War,error){
 	wire.Build(
 		wire.NewSet(
 			ProvideMockBeyondWall,
 			wire.Bind(new(House.IHouse), new(*House.MockBeyondWall)),
 			NewStarkProvider,
 			NewLannisterProvider,
-			NewMockWar))
-	return MockWar{},nil
+			NewWar))
+	return War{},nil
 }
 
 func NewStarkProvider()(House.Stark,error){
@@ -35,10 +37,6 @@ func NewStarkProvider()(House.Stark,error){
 func NewLannisterProvider()(House.Lannisters,error){
 	wire.Build(ProvideLannisters)
 	return House.Lannisters{},nil
-}
-func NewBeyondWallProvider()(House.BeyondWall,error){
-	wire.Build(ProvideBeyondWall)
-	return House.BeyondWall{},nil
 }
 
 
