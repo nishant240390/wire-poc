@@ -16,18 +16,16 @@ func Initialize()(War,error){
 	return War{},nil
 }
 
-//func InitializeMock()(War,error){
-//	wire.Build(
-//		wire.NewSet(
-//			ProvideMockBeyondWall,
-//			ProvideMockStarks,
-//			ProvideMockLannisters,
-//			wire.Bind(new(House.IHouse), new(*House.MockBeyondWall)),
-//			wire.Bind(new(House.IHouse), new(*House.MockStark)),
-//			wire.Bind(new(House.IHouse), new(*House.MockLannisters)),
-//			NewWar))
-//	return War{},nil
-//}
+func InitializeMock()(MockWar,error){
+	wire.Build(
+		wire.NewSet(
+			ProvideMockBeyondWall,
+			wire.Bind(new(House.IHouse), new(*House.MockBeyondWall)),
+			NewStarkProvider,
+			NewLannisterProvider,
+			NewMockWar))
+	return MockWar{},nil
+}
 
 func NewStarkProvider()(House.Stark,error){
 	wire.Build(ProvideStarks)

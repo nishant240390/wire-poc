@@ -28,6 +28,20 @@ func Initialize() (War, error) {
 	return war, nil
 }
 
+func InitializeMock() (MockWar, error) {
+	stark, err := NewStarkProvider()
+	if err != nil {
+		return MockWar{}, err
+	}
+	lannisters, err := NewLannisterProvider()
+	if err != nil {
+		return MockWar{}, err
+	}
+	mockBeyondWall := ProvideMockBeyondWall()
+	mockWar := NewMockWar(stark, lannisters, mockBeyondWall)
+	return mockWar, nil
+}
+
 func NewStarkProvider() (House.Stark, error) {
 	stark := ProvideStarks()
 	return stark, nil
