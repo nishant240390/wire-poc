@@ -1,7 +1,7 @@
 //+build wireinject
 
 
-package main
+package got
 
 import (
 	"github.com/google/wire"

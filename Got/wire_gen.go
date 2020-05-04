@@ -3,7 +3,7 @@
 //go:generate wire
 //+build !wireinject
 
-package main
+package got
 
 import (
 	"wire-poc/House"
